@@ -1,0 +1,21 @@
+{
+    "jobDefinitionName": "awsbatch-job", 
+    "type": "container", 
+    "parameters": {
+        "script": "sleep 600"
+    }, 
+    "containerProperties": {
+        "image": "344850189907.dkr.ecr.us-east-1.amazonaws.com/scicomp/awsbatch",
+        "vcpus": 1, 
+        "memory": 1024, 
+        "command": [ "/bin/bash","-ce","Ref::script" ], 
+        "jobRoleArn": "", 
+        "volumes": [], 
+        "environment": [], 
+        "mountPoints": [], 
+        "readonlyRootFilesystem": true, 
+        "privileged": true, 
+        "ulimits": [], 
+        "user": "root"
+    }
+}

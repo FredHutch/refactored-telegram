@@ -1,0 +1,35 @@
+{
+  "variables": {
+  },
+  "builders": [{
+    "type": "docker",
+    "commit": true,
+    "image": "ubuntu",
+    "author": "mrg@fredhutch.org",
+    "privileged": true
+  }],
+  "provisioners": [
+  {
+    "type": "file",
+    "source": "assets/download_and_go",
+    "destination": "/usr/local/bin/download_and_go"
+  },
+  {
+    "type":"shell",
+    "script":"scripts/packer-provision.sh"
+  }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "344850189907.dkr.ecr.us-east-1.amazonaws.com/scicomp/awsbatch",
+        "tag": "latest"
+      },
+      {
+        "type": "docker-push",
+        "login_server": "344850189907.dkr.ecr.us-east-1.amazonaws.com/"
+      }
+    ]
+  ]
+}

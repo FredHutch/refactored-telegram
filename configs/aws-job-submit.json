@@ -1,0 +1,9 @@
+{
+    "jobName": "moscowmule", 
+    "jobQueue": "generic-job-queue", 
+    "dependsOn": [],
+    "jobDefinition": "awsbatch-job", 
+    "parameters": {
+        "script": "sleep 15"
+    }
+}
